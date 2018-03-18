@@ -19,7 +19,7 @@ socket.on('disconnect',function(){
 jQuery('#message-form').on('submit',function(e){
   e.preventDefault();
 socket.emit('createMessage',{
-from:'user',
+from:jQuery('[name=owner]').val(),
 text:jQuery('[name=message]').val()
 },function(){
 

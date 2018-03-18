@@ -16,13 +16,13 @@ io.on('connection',(socket)=>{
 //when new user joins message is send
 socket.emit('newMessage',generateMessage('admin','Welcome to the chat-app'));
 
-//new user joined message is send to all others
-socket.broadcast.emit('newMessage',generateMessage('admin','New User Joined'));
-
 //sending message to client side
 socket.on('createMessage',(message,callback)=>{
   console.log('createMessage',message);
-  socket.emit('newMessage',generateMessage('user',message.text))
+  socket.emit('newMessage',generateMessage(message.from,message.text))
+ var mess=message.text
+ var split=mess.split(" ");
+ //console.log(split);
   if(message.text=='how'){
     socket.emit('newMessage',generateMessage('admin','are khud krle!'));
   }
